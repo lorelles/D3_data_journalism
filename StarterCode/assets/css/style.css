@@ -1,3 +1,8 @@
+
+/* #chart {
+  border-radius: 8px;
+} */
+
 .iframeContainer {
   padding: 20px;
   border: 1px solid #e3e3e3;
@@ -28,4 +33,64 @@ body {
 #footer p {
   margin: 0;
   font-size: 16px;
+}
+
+/* From #hairmetal  */
+
+.chart::before {
+  position: absolute;
+  top: 50px;
+  left: 300px;
+  z-index: -1;
+  display: block;
+  width: 400px;
+  height: 300px;
+  content: " ";
+  /* background-image: url("maxresdefault.jpg"); */
+  /* background-repeat: no-repeat; */
+  /* background-position: 50% 0; */
+  /* background-size: cover; */
+  /* opacity: 0.3; */
+}
+
+.tooltip {
+  position: absolute;
+  width: 135px;
+  height: 45px;
+  padding: 2px;
+  padding-top: 8px;
+  font: 12px sans-serif;
+  color: white;
+  text-align: center;
+  background: #551aaf;
+  border: 0;
+  border-radius: 10px;
+  pointer-events: none !important;
+}
+
+.axis-text {
+  font-family: sans-serif;
+  font-weight: bold;
+  fill: #0e2f8b;
+  text-anchor: middle;
+}
+
+.active {
+  font-weight: bold;
+  fill: #000;
+  fill: #0cac89;
+  transition: fill 0.3s ease-out;
+  text-anchor: middle;
+}
+
+.inactive {
+  font-weight: lighter;
+  fill: #551aaf;
+  transition: fill 0.3s ease-out;
+  text-anchor: middle;
+}
+
+.inactive:hover {
+  fill: #0a74ee;
+  cursor: pointer;
 }
