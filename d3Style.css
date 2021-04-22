@@ -2,18 +2,19 @@
   font-family: sans-serif;
   font-size: 16px;
   text-anchor: middle;
+  color:rgb(8, 64, 187);
 }
 
 .active {
   font-weight: bold;
-  fill: #000;
+  fill: rgb(8, 64, 187);
   transition: fill 0.3s ease-out;
   text-anchor: middle;
 }
 
 .inactive {
   font-weight: lighter;
-  fill: #c9c9c9;
+  fill: #3267db;
   transition: fill 0.3s ease-out;
   text-anchor: middle;
 }
@@ -32,7 +33,7 @@
 
 .stateCircle {
   fill: #89bdd3;
-  stroke: #e3e3e3;
+  stroke: #1f099c;
 }
 
 .chart {
@@ -48,8 +49,9 @@
   color: #fff;
   text-align: center;
   text-transform: capitalize;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(22, 44, 116, 0.8);
   border-radius: 4px;
+  stroke:rgb(11, 22, 11);
 }
 
 /* Mobile Rules */
