@@ -42,8 +42,8 @@ function xScale(data, chosenXAxis) {
 function yScale(data, YAxis) {
   // create scales
   const yLinearScale = d3.scaleLinear()
-    .domain(d3.min(data, d => d[YAxis]) * 0.8,
-      d3.max(data, d => d[YAxis]) * 1.2)
+    .domain([d3.min(data, d => d[YAxis]) * 0.8,
+      d3.max(data, d => d[YAxis]) * 1.2])
     .range([height, 0]);
   return yLinearScale;
 }
@@ -316,12 +316,12 @@ d3.csv("data.csv").then(data => {
     .on("click", function () {
       // get value of selection
       const value = d3.select(this).attr("value");
-      // if (value !== YAxis) {
+      if (value !== YAxis) {
         // replaces YAxis with value
         YAxis = value;
         console.log(YAxis)
 
-        // updates x scale for new data
+        // updates y scale for new data
         yLinearScale = yScale(data, YAxis);
 
         // updates x axis with transition
@@ -353,7 +353,7 @@ d3.csv("data.csv").then(data => {
         //     .classed("active", true)
         //     .classed("inactive", false);
         // }
-      // }
+      }
     });
 
 }).catch(error => console.log(error));
