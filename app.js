@@ -41,10 +41,6 @@ function yScale(data, chosenYAxis) {
   // create scales
   const yLinearScale = d3.scaleLinear()
     .domain([0, d3.max(data, d => d[chosenYAxis])])
-    // .domain(d3.min(data, d => d[chosenYAxis]) * 0.8,
-    //   d3.max(data, d => d[chosenYAxis]) * 1.2)
-    // .domain(d3.min(data, d => d[chosenYAxis]),
-    //   d3.max(data, d => d[chosenYAxis]))
     .range([height, 0]);
   return yLinearScale;
 }
@@ -71,6 +67,7 @@ function renderYAxes(newYScale, yAxis) {
 function renderCircles(circlesGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
   circlesGroup.transition()
     .duration(1000)
+    .ease(d3.easeBounceOut)
     .attr("cx", d => newXScale(d[chosenXAxis]))
     .attr("cy", d => newYScale(d[chosenYAxis]));
   return circlesGroup;
@@ -80,6 +77,7 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis, newYScale, chosenYA
 function renderText(textGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
   textGroup.transition()
     .duration(1000)
+    .ease(d3.easeBounceOut)
     .attr("x", d => newXScale(d[chosenXAxis]))
     .attr("y", d => newYScale(d[chosenYAxis]))
     .attr("text-anchor", "middle");
@@ -88,7 +86,6 @@ function renderText(textGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
 
 // Update circles group with new tooltip
 function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
-  // let label;
   if (chosenXAxis === "income") {
     xLabel = "Household Income (Median): ";
   }
@@ -102,22 +99,16 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
     yLabel = "Obesity (%): ";
   }
 
-
   // Set up toolTip
   const toolTip = d3.tip()
     .attr("class", "d3-tip")
     .offset([80, -60])
     .html(function (d) {
-      // return (`${ystartlabel}${d[chosenYAxis]}${yendlabel}<br>${xstartlabel}${chosenXAxis}${xendlabel}`)
       return (`${d.abbr}<br>${xLabel}${d[chosenXAxis]}<br>${yLabel}${d[chosenYAxis]}`)
     });
 
   // Set toolTip for circles
   circlesGroup.call(toolTip);
-
-  // Event listeners with transitions
-  // let t = d3.transition().duration(1000).ease(d3.easeBounceOut)
-
   // onmouseover event
   circlesGroup.on("mouseover", function (data) {
     toolTip.show(data, this);
@@ -130,7 +121,6 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
 
   // Set up toolTip for text
   textGroup.call(toolTip);
-
   // onmouseover event
   textGroup.on("mouseover", function (data) {
     toolTip.show(data, this);
@@ -139,13 +129,6 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
     .on("mouseout", function (data) {
       toolTip.hide(data, this);
     });
-
-  // transition on page load
-  // chartGroup.selectAll("circle")
-  //   .transition(t)
-  //   .attr("cx", d => newXScale(d[chosenXAxis]))
-  //   .attr("cy", d => yLinearScale(d.smokes))
-
   return circlesGroup;
 }
 
@@ -187,7 +170,7 @@ d3.csv("data.csv").then(data => {
     .attr("class", "stateCircle")
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
     .attr("cy", d => yLinearScale(d[chosenYAxis]))
-    .attr("r", 10)
+    .attr("r", 15)
     // .attr("fill", "lightblue")
     .attr("opacity", 0.8);
   // .attr("stroke", "blue");
@@ -201,8 +184,9 @@ d3.csv("data.csv").then(data => {
     .attr("x", d => xLinearScale(d[chosenXAxis]))
     .attr("y", d => yLinearScale(d[chosenYAxis]))
     .text(d => (d.abbr))
+    .attr('alignment-baseline', 'middle')
     .attr("fill", "white")
-    .attr("font-size", "10px")
+    .attr("font-size", "12px")
     .attr("text-anchor", "middle");
 
   // let textGroup = chartGroup.selectAll("text")

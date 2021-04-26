@@ -32,12 +32,13 @@
 }
 
 .stateCircle {
-  fill: #89bdd3;
-  stroke: #1f099c;
+  fill: #1a83af;
+  stroke: #04215f;
 }
 
-.chart {
-  display: block;
+.scatter {
+  display: inline-block;
+  position: relative;
   margin: 0;
 }
 
@@ -51,7 +52,7 @@
   text-transform: capitalize;
   background: rgba(22, 44, 116, 0.8);
   border-radius: 4px;
-  stroke:rgb(11, 22, 11);
+  stroke:rgb(32, 94, 4);
 }
 
 /* Mobile Rules */
@@ -59,10 +60,19 @@
   .stateText {
     display: none;
   }
-
   .aText {
     font-size: 14px;
   }
+  .container {   
+    flex-direction: column;
+  }
+  .row {   
+    flex-direction: column;
+  }
+  .scatter {   
+    flex-direction: column;
+  }
+  
 }
 
 @media screen and (max-width: 400px) {
