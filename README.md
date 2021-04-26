@@ -1,1 +1,3 @@
-# D3_data_journalism
+This project will utilize D3 Javascript, html, and CSS to produce a scatter plot that displays data from the U.S. Census Bureau and the Behavioral Risk Factor Surveillance System in order to analyze current health risks facing particular demographics with interactive elements to better vizualize the data.
+
+In the main repository you will find the "index.html" file which you can use to launch the webpage on your IDE. The data was pulled from "data.csv" using the d3.csv function within "app.js." The Javascript to code the graphic is in the "app.js" file. The "style.css" file adds style elements to the webpage and "d3Style.css" implements tooltips to reveal each circle's data that the user has selected, using the d3-tip.js plugin developed by Justin Palmer.
