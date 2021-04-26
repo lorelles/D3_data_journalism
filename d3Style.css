@@ -1,32 +1,35 @@
 .aText {
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   text-anchor: middle;
   color:rgb(8, 64, 187);
 }
 
 .active {
   font-weight: bold;
-  fill: rgb(8, 64, 187);
+  font-size: 20px;
+  fill: rgb(6, 70, 122);
   transition: fill 0.3s ease-out;
   text-anchor: middle;
 }
 
 .inactive {
-  font-weight: lighter;
-  fill: #3267db;
+  font-weight: bold;
+  font-size: 18px;
+  fill: #0b6474;
+  opacity: 0.75;
   transition: fill 0.3s ease-out;
   text-anchor: middle;
 }
 
 .inactive:hover {
-  fill: #000;
+  fill: rgb(27, 231, 231);
   cursor: pointer;
 }
 
-/* font size dependent on radius, see app.js */
 .stateText {
   font-family: sans-serif;
+  font-size: 6;
   fill: #fff;
   text-anchor: middle;
 }
@@ -44,13 +47,13 @@
 
 .d3-tip {
   padding: 6px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1;
   line-height: 1.5em;
   color: #fff;
   text-align: center;
   text-transform: capitalize;
-  background: rgba(22, 44, 116, 0.8);
+  background: rgba(18, 161, 172, 0.8);
   border-radius: 4px;
   stroke:rgb(32, 94, 4);
 }
@@ -71,8 +74,7 @@
   }
   .scatter {   
     flex-direction: column;
-  }
-  
+  }  
 }
 
 @media screen and (max-width: 400px) {
